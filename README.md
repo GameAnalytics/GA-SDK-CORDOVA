@@ -3,7 +3,7 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # cordova-plugin-gameanalytics
-Cordova plugin for the GameAnalytics SDK for Android and iOS.
+Official Cordova plugin for the GameAnalytics SDK for Android and iOS.
 
 #### Native Libraries:
 Android | iOS
@@ -36,6 +36,9 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**1.0.3**
+* readme updated
+
 **1.0.2**
 * plugin description fixes
 
