@@ -19,9 +19,14 @@ From your command prompt/terminal go to your app's root folder and execute:
 ```
 
 onDeviceReady: function() {
-    GameAnalytics.initialize("[INSERT_GAME_KEY]", "[INSERT_SECRET_KEY]");
+    GameAnalytics.initialize({
+        gameKey: "[INSERT_GAME_KEY]",
+        secretKey: "[INSERT_SECRET_KEY]"
+    });
 
-    GameAnalytics.addDesignEvent("design:event");
+    GameAnalytics.addDesignEvent({
+        eventId: "design:event"
+    });
 }
 
 ```
@@ -31,9 +36,11 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**1.0.2**
+* plugin description fixes
+
 **1.0.1**
 * version fix
 
 **1.0.0**
 * initial version
-

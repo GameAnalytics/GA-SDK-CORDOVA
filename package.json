@@ -1,7 +1,7 @@
 {
     "name": "cordova-plugin-gameanalytics",
-    "version": "1.0.1",
-    "description": "GameAnalytics SDK Cordova Plugin",
+    "version": "1.0.2",
+    "description": "Official GameAnalytics SDK Cordova Plugin",
     "cordova": {
         "id": "cordova-plugin-gameanalytics",
         "platforms": [
