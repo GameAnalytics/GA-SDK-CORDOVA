@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.gameanalytics.cordova" version="0.1">
+    <name>GameAnalytics Cordova SDK</name>
+    <description>GameAnalytics SDK Cordova Plugin for Android and iOS</description>
+    <keywords>gameanalytics,analytics</keywords>
+    <license>MIT</license>
+
+    <engines>
+        <engine name="cordova" version=">=7.0.0" />
+        <engine name="cordova-android" version=">=6.3.0" />
+        <engine name="cordova-ios" version=">=4.4.0" />
+    </engines>
+
+    <js-module name="GameAnalytics" src="www/GameAnalytics.js">
+        <clobbers target="GameAnalytics" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="GameAnalytics">
+                <param name="android-package" value="com.gameanalytics.sdk.cordova.GameAnalyticsCordova"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/GameAnalyticsCordova.java" target-dir="src/com/gameanalytics/sdk/cordova" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="GameAnalytics">
+                <param name="ios-package" value="GameAnalyticsCordova" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/GameAnalytics.h" />
+        <header-file src="src/ios/GameAnalyticsCordova.h" />
+        <source-file src="src/ios/GameAnalyticsCordova.m" />
+
+        <framework src="GA-SDK-IOS" type="podspec" spec="~> 2.2.13" />
+        <framework src="AdSupport.framework" weak="true" />
+        <framework src="SystemConfiguration.framework" weak="true" />
+        <framework src="libsqlite3.tbd" weak="true" />
+        <framework src="libz.tbd" weak="true" />
+    </platform>
+</plugin>
