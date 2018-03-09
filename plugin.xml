@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.gameanalytics.cordova" version="0.1">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-gameanalytics" version="0.1">
     <name>GameAnalytics Cordova SDK</name>
-    <description>GameAnalytics SDK Cordova Plugin for Android and iOS</description>
+    <description>Official GameAnalytics SDK Cordova Plugin for Android and iOS</description>
     <keywords>gameanalytics,analytics</keywords>
     <license>MIT</license>
 
     <engines>
-        <engine name="cordova" version=">=7.0.0" />
-        <engine name="cordova-android" version=">=6.3.0" />
-        <engine name="cordova-ios" version=">=4.4.0" />
+        <engine name="cordova" version=">=6.0.0" />
+        <engine name="cordova-android" version=">=6.2.0" />
+        <engine name="cordova-ios" version=">=4.3.0" />
     </engines>
 
     <js-module name="GameAnalytics" src="www/GameAnalytics.js">

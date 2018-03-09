@@ -36,6 +36,10 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**1.0.4**
+* lowered minimum required cordova version
+* changed plugin id to match npm package id
+
 **1.0.3**
 * readme updated
 
