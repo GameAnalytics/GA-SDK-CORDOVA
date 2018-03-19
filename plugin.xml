@@ -40,7 +40,7 @@
         <header-file src="src/ios/GameAnalyticsCordova.h" />
         <source-file src="src/ios/GameAnalyticsCordova.m" />
 
-        <framework src="GA-SDK-IOS" type="podspec" spec="~> 2.2.13" />
+        <framework src="GA-SDK-IOS" type="podspec" spec="~> 2.2.14" />
         <framework src="AdSupport.framework" weak="true" />
         <framework src="SystemConfiguration.framework" weak="true" />
         <framework src="libsqlite3.tbd" weak="true" />
