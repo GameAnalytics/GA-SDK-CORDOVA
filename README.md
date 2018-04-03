@@ -36,6 +36,9 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**1.0.6**
+* fixed initialize function
+
 **1.0.5**
 * updated native libraries to cordova sdk version to events
 
