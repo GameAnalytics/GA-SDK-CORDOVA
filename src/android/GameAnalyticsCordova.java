@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "1.0.6";
+    private static final String VERSION = "1.0.7";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -138,15 +138,15 @@ public class GameAnalyticsCordova extends CordovaPlugin
             JSONObject args = data.optJSONObject(0);
             String gameKey = "";
             String gameSecret = "";
-            //String sdkVersion = "cordova " + VERSION;
-            String sdkVersion = "";
+            String sdkVersion = "cordova " + VERSION;
+            //String sdkVersion = "";
 
             if(args != null)
             {
                 gameKey = args.optString("gameKey", "");
                 gameSecret = args.optString("secretKey", "");
-                //sdkVersion = args.optString("sdkVersion", "cordova " + VERSION);
-                sdkVersion = args.optString("sdkVersion", "");
+                sdkVersion = args.optString("sdkVersion", "cordova " + VERSION);
+                //sdkVersion = args.optString("sdkVersion", "");
             }
 
             GameAnalytics.configureSdkGameEngineVersion(sdkVersion);

@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"1.0.6"
+#define VERSION @"1.0.7"
 
 @implementation GameAnalyticsCordova
 
@@ -53,15 +53,15 @@
 
     NSString* gameKey = nil;
     NSString* secretKey = nil;
-    //NSString* sdkVersion = [NSString stringWithFormat:@"cordova %@", VERSION];
-    NSString* sdkVersion = nil;
+    NSString* sdkVersion = [NSString stringWithFormat:@"cordova %@", VERSION];
+    //NSString* sdkVersion = nil;
 
     if(args != nil)
     {
         gameKey = args[@"gameKey"];
         secretKey = args[@"secretKey"];
-        //sdkVersion = args[@"sdkVersion"] ? args[@"sdkVersion"] : [NSString stringWithFormat:@"cordova %@", VERSION];
-        sdkVersion = args[@"sdkVersion"] ? args[@"sdkVersion"] : nil;
+        sdkVersion = args[@"sdkVersion"] ? args[@"sdkVersion"] : [NSString stringWithFormat:@"cordova %@", VERSION];
+        //sdkVersion = args[@"sdkVersion"] ? args[@"sdkVersion"] : nil;
     }
 
     [GameAnalytics configureSdkVersion:sdkVersion];
