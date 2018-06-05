@@ -36,6 +36,9 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**1.0.8**
+* added custom dimensions to design and error events
+
 **1.0.7**
 * fixed session length bug
 * fixed now allowing to add events when session is not started
