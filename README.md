@@ -36,6 +36,9 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**1.0.11**
+* version fix in plugin.xml
+
 **1.0.10**
 * version fix in plugin.xml
 
