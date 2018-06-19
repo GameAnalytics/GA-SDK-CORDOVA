@@ -36,6 +36,9 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**1.0.9**
+* lowered required cordova-android to 6.1.2
+
 **1.0.8**
 * added custom dimensions to design and error events
 
