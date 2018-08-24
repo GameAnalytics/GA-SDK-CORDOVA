@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"1.0.11"
+#define VERSION @"2.0.0"
 
 @implementation GameAnalyticsCordova
 
@@ -265,6 +265,45 @@
 - (void)endSession:(CDVInvokedUrlCommand*)command
 {
     [GameAnalytics endSession];
+}
+
+- (void)getCommandCenterValueAsString:(CDVInvokedUrlCommand*)command
+{
+    NSMutableDictionary* args = [command.arguments objectAtIndex:0];
+    NSString* key = nil;
+    NSString* defaultValue = nil;
+
+    if(args != nil)
+    {
+        key = args[@"key"];
+        defaultValue = args[@"defaultValue"];
+    }
+
+    NSString* result = nil;
+    if(defaultValue)
+    {
+        result = [GameAnalytics getCommandCenterValueAsString:key defaultValue:defaultValue];
+    }
+    else
+    {
+        result = [GameAnalytics getCommandCenterValueAsString:key];
+    }
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)isCommandCenterReady:(CDVInvokedUrlCommand*)command
+{
+    BOOL result = [GameAnalytics isCommandCenterReady];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:result];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)getConfigurationsContentAsString:(CDVInvokedUrlCommand*)command
+{
+    NSString* result = [GameAnalytics getCommandCenterConfigurations];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 @end

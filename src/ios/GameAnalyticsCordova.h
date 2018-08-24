@@ -26,5 +26,8 @@
 - (void)setBirthYear:(CDVInvokedUrlCommand*)command;
 - (void)startSession:(CDVInvokedUrlCommand*)command;
 - (void)endSession:(CDVInvokedUrlCommand*)command;
+- (void)getCommandCenterValueAsString:(CDVInvokedUrlCommand*)command;
+- (void)isCommandCenterReady:(CDVInvokedUrlCommand*)command;
+- (void)getConfigurationsContentAsString:(CDVInvokedUrlCommand*)command;
 
 @end

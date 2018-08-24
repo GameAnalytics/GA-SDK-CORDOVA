@@ -7,6 +7,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
+import org.apache.cordova.PluginResult.Status;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "1.0.11";
+    private static final String VERSION = "2.0.0";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -358,6 +359,42 @@ public class GameAnalyticsCordova extends CordovaPlugin
         {
             GameAnalytics.endSession();
             callbackContext.success();
+            return true;
+        }
+        else if(action.equals("getCommandCenterValueAsString"))
+        {
+            JSONObject args = data.optJSONObject(0);
+            String key = "";
+            String defaultValue = null;
+
+            if(args != null)
+            {
+                key = args.optString("key", "");
+                defaultValue = args.optString("defaultValue", null);
+            }
+
+            String result = null;
+            if(defaultValue != null)
+            {
+                result = GameAnalytics.getCommandCenterValueAsString(key, defaultValue);
+            }
+            else
+            {
+                result = GameAnalytics.getCommandCenterValueAsString(key);
+            }
+            callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
+            return true;
+        }
+        else if(action.equals("isCommandCenterReady"))
+        {
+            boolean result = GameAnalytics.isCommandCenterReady();
+            callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
+            return true;
+        }
+        else if(action.equals("getConfigurationsContentAsString"))
+        {
+            String result = GameAnalytics.getConfigurationsContentAsString();
+            callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
             return true;
         }
 

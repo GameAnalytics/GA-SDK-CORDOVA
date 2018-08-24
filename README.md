@@ -36,6 +36,10 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**2.0.0**
+* added command center functionality
+* updated google play services dependency version (android)
+
 **1.0.11**
 * version fix in plugin.xml
 
