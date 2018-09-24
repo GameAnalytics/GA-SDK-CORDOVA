@@ -36,6 +36,9 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**2.0.1**
+* fixed validator bugs for ios
+
 **2.0.0**
 * added command center functionality
 * updated google play services dependency version (android)

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "2.0.0";
+    private static final String VERSION = "2.0.1";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
