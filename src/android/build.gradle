@@ -5,5 +5,5 @@ repositories {
 
 dependencies {
     compile 'com.google.android.gms:play-services-ads-identifier:+'
-    compile "com.gameanalytics.sdk:gameanalytics-android:4.0.1"
+    compile "com.gameanalytics.sdk:gameanalytics-android:4.1.2"
 }
