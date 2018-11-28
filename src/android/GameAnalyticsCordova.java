@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "2.0.2";
+    private static final String VERSION = "2.0.3";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -40,7 +40,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             {
                 for(int i = 0; i < jsonArray.length(); ++i)
                 {
-                    array.add(jsonArray.getString(i));
+                    array.add(jsonArray.optString(i, ""));
                 }
             }
 
@@ -58,7 +58,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             {
                 for(int i = 0; i < jsonArray.length(); ++i)
                 {
-                    array.add(jsonArray.getString(i));
+                    array.add(jsonArray.optString(i, ""));
                 }
             }
 
@@ -76,7 +76,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             {
                 for(int i = 0; i < jsonArray.length(); ++i)
                 {
-                    array.add(jsonArray.getString(i));
+                    array.add(jsonArray.optString(i, ""));
                 }
             }
 
@@ -94,7 +94,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             {
                 for(int i = 0; i < jsonArray.length(); ++i)
                 {
-                    array.add(jsonArray.getString(i));
+                    array.add(jsonArray.optString(i, ""));
                 }
             }
 
@@ -112,7 +112,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             {
                 for(int i = 0; i < jsonArray.length(); ++i)
                 {
-                    array.add(jsonArray.getString(i));
+                    array.add(jsonArray.optString(i, ""));
                 }
             }
 

@@ -39,6 +39,9 @@ For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**2.0.3**
+* added type checks in wrapper layer
+
 **2.0.2**
 * fixed business event validation
 
