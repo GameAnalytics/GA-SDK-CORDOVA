@@ -10,6 +10,9 @@ Android | iOS
 ---------- | -----------
 [GA-SDK-ANDROID](https://github.com/GameAnalytics/GA-SDK-ANDROID) |  [GA-SDK-IOS](https://cocoapods.org/pods/GA-SDK-IOS)
 
+## Requirements
+* Cocoapods (only iOS)
+
 ## Installation
 From your command prompt/terminal go to your app's root folder and execute:
 
