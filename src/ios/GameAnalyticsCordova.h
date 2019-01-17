@@ -18,6 +18,7 @@
 - (void)setEnabledInfoLog:(CDVInvokedUrlCommand*)command;
 - (void)setEnabledVerboseLog:(CDVInvokedUrlCommand*)command;
 - (void)setEnabledManualSessionHandling:(CDVInvokedUrlCommand*)command;
+- (void)setEnabledEventSubmission:(CDVInvokedUrlCommand*)command;
 - (void)setCustomDimension01:(CDVInvokedUrlCommand*)command;
 - (void)setCustomDimension02:(CDVInvokedUrlCommand*)command;
 - (void)setCustomDimension03:(CDVInvokedUrlCommand*)command;

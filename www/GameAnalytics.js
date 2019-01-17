@@ -112,6 +112,11 @@ GameAnalytics.setEnabledManualSessionHandling = function(flag, onComplete) {
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setEnabledManualSessionHandling', [flag]);
 };
 
+GameAnalytics.setEnabledEventSubmission = function(flag, onComplete) {
+    console.log("GameAnalytics.setEnabledEventSubmission");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setEnabledEventSubmission', [flag]);
+};
+
 GameAnalytics.setCustomDimension01 = function(dimension, onComplete) {
     console.log("GameAnalytics.setCustomDimension01");
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setCustomDimension01', [dimension]);

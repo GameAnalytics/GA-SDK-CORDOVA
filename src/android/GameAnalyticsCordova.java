@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "2.0.3";
+    private static final String VERSION = "2.1.0";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -304,6 +304,13 @@ public class GameAnalyticsCordova extends CordovaPlugin
         {
             boolean flag = data.optBoolean(0, false);
             GameAnalytics.setEnabledManualSessionHandling(flag);
+            callbackContext.success();
+            return true;
+        }
+        else if(action.equals("setEnabledEventSubmission"))
+        {
+            boolean flag = data.optBoolean(0, true);
+            GameAnalytics.setEnabledEventSubmission(flag);
             callbackContext.success();
             return true;
         }

@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"2.0.3"
+#define VERSION @"2.1.0"
 
 @implementation GameAnalyticsCordova
 
@@ -272,6 +272,15 @@
     {
         BOOL flag = [[command.arguments objectAtIndex:0] boolValue];
         [GameAnalytics setEnabledManualSessionHandling:flag];
+    }
+}
+
+- (void)setEnabledEventSubmission:(CDVInvokedUrlCommand*)command
+{
+    if([command.arguments objectAtIndex:0] && [[command.arguments objectAtIndex:0] isKindOfClass:[NSNumber class]] && ([[command.arguments objectAtIndex:0] isEqual:[NSNumber numberWithBool:YES]] || [[command.arguments objectAtIndex:0] isEqual:[NSNumber numberWithBool:NO]]))
+    {
+        BOOL flag = [[command.arguments objectAtIndex:0] boolValue];
+        [GameAnalytics setEnabledEventSubmission:flag];
     }
 }
 
