@@ -36,6 +36,8 @@ onDeviceReady: function() {
 
 For more documentation click [here](https://gameanalytics.com/docs/cordova-sdk).
 
+If you have any issues or feedback regarding the SDK, please contact our friendly support team [here](https://gameanalytics.com/contact).
+
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
