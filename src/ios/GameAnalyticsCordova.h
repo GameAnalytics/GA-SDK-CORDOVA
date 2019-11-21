@@ -27,8 +27,8 @@
 - (void)setBirthYear:(CDVInvokedUrlCommand*)command;
 - (void)startSession:(CDVInvokedUrlCommand*)command;
 - (void)endSession:(CDVInvokedUrlCommand*)command;
-- (void)getCommandCenterValueAsString:(CDVInvokedUrlCommand*)command;
-- (void)isCommandCenterReady:(CDVInvokedUrlCommand*)command;
-- (void)getConfigurationsContentAsString:(CDVInvokedUrlCommand*)command;
+- (void)getRemoteConfigsValueAsString:(CDVInvokedUrlCommand*)command;
+- (void)isRemoteConfigsReady:(CDVInvokedUrlCommand*)command;
+- (void)getRemoteConfigsContentAsString:(CDVInvokedUrlCommand*)command;
 
 @end

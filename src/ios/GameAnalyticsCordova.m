@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"2.1.0"
+#define VERSION @"3.0.0"
 
 @implementation GameAnalyticsCordova
 
@@ -338,7 +338,7 @@
     [GameAnalytics endSession];
 }
 
-- (void)getCommandCenterValueAsString:(CDVInvokedUrlCommand*)command
+- (void)getRemoteConfigsValueAsString:(CDVInvokedUrlCommand*)command
 {
     NSMutableDictionary* args = [command.arguments objectAtIndex:0];
     NSString* key = nil;
@@ -353,26 +353,26 @@
     NSString* result = nil;
     if(defaultValue)
     {
-        result = [GameAnalytics getCommandCenterValueAsString:key defaultValue:defaultValue];
+        result = [GameAnalytics getRemoteConfigsValueAsString:key defaultValue:defaultValue];
     }
     else
     {
-        result = [GameAnalytics getCommandCenterValueAsString:key];
+        result = [GameAnalytics getRemoteConfigsValueAsString:key];
     }
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void)isCommandCenterReady:(CDVInvokedUrlCommand*)command
+- (void)isRemoteConfigsReady:(CDVInvokedUrlCommand*)command
 {
-    BOOL result = [GameAnalytics isCommandCenterReady];
+    BOOL result = [GameAnalytics isRemoteConfigsReady];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:result];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void)getConfigurationsContentAsString:(CDVInvokedUrlCommand*)command
+- (void)getRemoteConfigsContentAsString:(CDVInvokedUrlCommand*)command
 {
-    NSString* result = [GameAnalytics getCommandCenterConfigurations];
+    NSString* result = [GameAnalytics getRemoteConfigsContentAsString];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }

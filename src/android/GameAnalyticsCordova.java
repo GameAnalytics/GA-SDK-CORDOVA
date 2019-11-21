@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "2.1.0";
+    private static final String VERSION = "3.0.0";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -368,7 +368,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             callbackContext.success();
             return true;
         }
-        else if(action.equals("getCommandCenterValueAsString"))
+        else if(action.equals("getRemoteConfigsValueAsString"))
         {
             JSONObject args = data.optJSONObject(0);
             String key = "";
@@ -383,24 +383,24 @@ public class GameAnalyticsCordova extends CordovaPlugin
             String result = null;
             if(defaultValue != null)
             {
-                result = GameAnalytics.getCommandCenterValueAsString(key, defaultValue);
+                result = GameAnalytics.getRemoteConfigsValueAsString(key, defaultValue);
             }
             else
             {
-                result = GameAnalytics.getCommandCenterValueAsString(key);
+                result = GameAnalytics.getRemoteConfigsValueAsString(key);
             }
             callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
             return true;
         }
-        else if(action.equals("isCommandCenterReady"))
+        else if(action.equals("isRemoteConfigsReady"))
         {
-            boolean result = GameAnalytics.isCommandCenterReady();
+            boolean result = GameAnalytics.isRemoteConfigsReady();
             callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
             return true;
         }
-        else if(action.equals("getConfigurationsContentAsString"))
+        else if(action.equals("getRemoteConfigsContentAsString"))
         {
-            String result = GameAnalytics.getConfigurationsContentAsString();
+            String result = GameAnalytics.getRemoteConfigsContentAsString();
             callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
             return true;
         }

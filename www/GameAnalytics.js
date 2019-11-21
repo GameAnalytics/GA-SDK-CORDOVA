@@ -157,19 +157,19 @@ GameAnalytics.endSession = function(onComplete) {
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'endSession', []);
 };
 
-GameAnalytics.getCommandCenterValueAsString = function(args, onComplete) {
-    console.log("GameAnalytics.getCommandCenterValueAsString");
-    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'getCommandCenterValueAsString', [args]);
+GameAnalytics.getRemoteConfigsValueAsString = function(args, onComplete) {
+    console.log("GameAnalytics.getRemoteConfigsValueAsString");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'getRemoteConfigsValueAsString', [args]);
 };
 
-GameAnalytics.isCommandCenterReady = function(onComplete) {
-    console.log("GameAnalytics.isCommandCenterReady");
-    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'isCommandCenterReady', []);
+GameAnalytics.isRemoteConfigsReady = function(onComplete) {
+    console.log("GameAnalytics.isRemoteConfigsReady");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'isRemoteConfigsReady', []);
 };
 
-GameAnalytics.getConfigurationsContentAsString = function(onComplete) {
-    console.log("GameAnalytics.getConfigurationsContentAsString");
-    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'getConfigurationsContentAsString', []);
+GameAnalytics.getRemoteConfigsContentAsString = function(onComplete) {
+    console.log("GameAnalytics.getRemoteConfigsContentAsString");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'getRemoteConfigsContentAsString', []);
 };
 
 /******************************************************************************************************************/
