@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"3.0.4"
+#define VERSION @"3.0.5"
 
 @implementation GameAnalyticsCordova
 
@@ -90,6 +90,15 @@
         build = @"";
     }
     [GameAnalytics configureBuild:build];
+}
+
+- (void)configureAutoDetectAppVersion:(CDVInvokedUrlCommand*)command
+{
+    if([command.arguments objectAtIndex:0] && [[command.arguments objectAtIndex:0] isKindOfClass:[NSNumber class]] && ([[command.arguments objectAtIndex:0] isEqual:[NSNumber numberWithBool:YES]] || [[command.arguments objectAtIndex:0] isEqual:[NSNumber numberWithBool:NO]]))
+    {
+        BOOL flag = [[command.arguments objectAtIndex:0] boolValue];
+        [GameAnalytics configureAutoDetectAppVersion:flag];
+    }
 }
 
 - (void)configureUserId:(CDVInvokedUrlCommand*)command
@@ -300,32 +309,6 @@
 {
     NSString* dimension = [command.arguments objectAtIndex:0];
     [GameAnalytics setCustomDimension03:dimension];
-}
-
-- (void)setFacebookId:(CDVInvokedUrlCommand*)command
-{
-    NSString* facebookId = [command.arguments objectAtIndex:0];
-    [GameAnalytics setFacebookId:facebookId];
-}
-
-- (void)setGender:(CDVInvokedUrlCommand*)command
-{
-    int gender = [command.arguments objectAtIndex:0] && [[command.arguments objectAtIndex:0] isKindOfClass:[NSNumber class]] ? [[command.arguments objectAtIndex:0] intValue] : 0;
-
-    if(gender == 1)
-    {
-        [GameAnalytics setGender:@"male"];
-    }
-    else if(gender == 2)
-    {
-        [GameAnalytics setGender:@"female"];
-    }
-}
-
-- (void)setBirthYear:(CDVInvokedUrlCommand*)command
-{
-    int year = [command.arguments objectAtIndex:0] && [[command.arguments objectAtIndex:0] isKindOfClass:[NSNumber class]] ? [[command.arguments objectAtIndex:0] intValue] : 0;
-    [GameAnalytics setBirthYear:year];
 }
 
 - (void)startSession:(CDVInvokedUrlCommand*)command

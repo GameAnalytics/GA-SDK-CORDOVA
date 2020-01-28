@@ -8,6 +8,7 @@
 - (void)configureAvailableResourceCurrencies:(CDVInvokedUrlCommand*)command;
 - (void)configureAvailableResourceItemTypes:(CDVInvokedUrlCommand*)command;
 - (void)configureBuild:(CDVInvokedUrlCommand*)command;
+- (void)configureAutoDetectAppVersion:(CDVInvokedUrlCommand*)command;
 - (void)configureUserId:(CDVInvokedUrlCommand*)command;
 - (void)initialize:(CDVInvokedUrlCommand*)command;
 - (void)addBusinessEvent:(CDVInvokedUrlCommand*)command;
@@ -22,9 +23,6 @@
 - (void)setCustomDimension01:(CDVInvokedUrlCommand*)command;
 - (void)setCustomDimension02:(CDVInvokedUrlCommand*)command;
 - (void)setCustomDimension03:(CDVInvokedUrlCommand*)command;
-- (void)setFacebookId:(CDVInvokedUrlCommand*)command;
-- (void)setGender:(CDVInvokedUrlCommand*)command;
-- (void)setBirthYear:(CDVInvokedUrlCommand*)command;
 - (void)startSession:(CDVInvokedUrlCommand*)command;
 - (void)endSession:(CDVInvokedUrlCommand*)command;
 - (void)getRemoteConfigsValueAsString:(CDVInvokedUrlCommand*)command;

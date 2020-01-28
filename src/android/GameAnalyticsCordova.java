@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "3.0.4";
+    private static final String VERSION = "3.0.5";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -124,6 +124,13 @@ public class GameAnalyticsCordova extends CordovaPlugin
         {
             String build = data.optString(0, "");
             GameAnalytics.configureBuild(build);
+            callbackContext.success();
+            return true;
+        }
+        else if(action.equals("configureAutoDetectAppVersion"))
+        {
+            boolean flag = data.optBoolean(0, false);
+            GameAnalytics.configureAutoDetectAppVersion(flag);
             callbackContext.success();
             return true;
         }
@@ -332,27 +339,6 @@ public class GameAnalyticsCordova extends CordovaPlugin
         {
             String dimension = data.optString(0, "");
             GameAnalytics.setCustomDimension03(dimension);
-            callbackContext.success();
-            return true;
-        }
-        else if(action.equals("setFacebookId"))
-        {
-            String facebookId = data.optString(0, "");
-            GameAnalytics.setFacebookId(facebookId);
-            callbackContext.success();
-            return true;
-        }
-        else if(action.equals("setGender"))
-        {
-            int gender = data.optInt(0, 0);
-            GameAnalytics.setGender(gender);
-            callbackContext.success();
-            return true;
-        }
-        else if(action.equals("setBirthYear"))
-        {
-            int birthYear = data.optInt(0, 0);
-            GameAnalytics.setBirthYear(birthYear);
             callbackContext.success();
             return true;
         }

@@ -13,12 +13,6 @@ GameAnalytics.EGAErrorSeverity = {
     Critical: 5
 };
 
-GameAnalytics.EGAGender = {
-    Undefined: 0,
-    Male: 1,
-    Female: 2
-};
-
 GameAnalytics.EGAResourceFlowType = {
     Undefined: 0,
     Source: 1,
@@ -60,6 +54,11 @@ GameAnalytics.configureAvailableResourceItemTypes = function(resourceItemTypes, 
 GameAnalytics.configureBuild = function(build, onComplete) {
     console.log("GameAnalytics.configureBuild");
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'configureBuild', [build]);
+};
+
+GameAnalytics.configureAutoDetectAppVersion = function(flag, onComplete) {
+    console.log("GameAnalytics.configureAutoDetectAppVersion");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'configureAutoDetectAppVersion', [flag]);
 };
 
 GameAnalytics.configureUserId = function(uId, onComplete) {
@@ -130,21 +129,6 @@ GameAnalytics.setCustomDimension02 = function(dimension, onComplete) {
 GameAnalytics.setCustomDimension03 = function(dimension, onComplete) {
     console.log("GameAnalytics.setCustomDimension03");
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setCustomDimension03', [dimension]);
-};
-
-GameAnalytics.setFacebookId = function(facebookId, onComplete) {
-    console.log("GameAnalytics.setFacebookId");
-    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setFacebookId', [facebookId]);
-};
-
-GameAnalytics.setGender = function(gender, onComplete) {
-    console.log("GameAnalytics.setGender");
-    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setGender', [gender]);
-};
-
-GameAnalytics.setBirthYear = function(birthYear, onComplete) {
-    console.log("GameAnalytics.setBirthYear");
-    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setBirthYear', [birthYear]);
 };
 
 GameAnalytics.startSession = function(onComplete) {
