@@ -41,6 +41,9 @@ If you have any issues or feedback regarding the SDK, please contact our friendl
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**3.0.9**
+* updated native lib dependencies
+
 **3.0.8**
 * added session_num to init request
 
