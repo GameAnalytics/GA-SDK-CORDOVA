@@ -156,6 +156,16 @@ GameAnalytics.getRemoteConfigsContentAsString = function(onComplete) {
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'getRemoteConfigsContentAsString', []);
 };
 
+GameAnalytics.getABTestingId = function(onComplete) {
+    console.log("GameAnalytics.getABTestingId");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'getABTestingId', []);
+};
+
+GameAnalytics.getABTestingVariantId = function(onComplete) {
+    console.log("GameAnalytics.getABTestingVariantId");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'getABTestingVariantId', []);
+};
+
 /******************************************************************************************************************/
 /*                                                PRIVATE/INTERNAL                                                */
 /******************************************************************************************************************/

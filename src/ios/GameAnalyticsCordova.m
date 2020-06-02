@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"3.0.10"
+#define VERSION @"3.1.0"
 
 @implementation GameAnalyticsCordova
 
@@ -356,6 +356,20 @@
 - (void)getRemoteConfigsContentAsString:(CDVInvokedUrlCommand*)command
 {
     NSString* result = [GameAnalytics getRemoteConfigsContentAsString];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)getABTestingId:(CDVInvokedUrlCommand*)command
+{
+    NSString* result = [GameAnalytics getABTestingId];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)getABTestingVariantId:(CDVInvokedUrlCommand*)command
+{
+    NSString* result = [GameAnalytics getABTestingVariantId];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }

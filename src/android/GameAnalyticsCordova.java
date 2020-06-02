@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "3.0.10";
+    private static final String VERSION = "3.1.0";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -387,6 +387,18 @@ public class GameAnalyticsCordova extends CordovaPlugin
         else if(action.equals("getRemoteConfigsContentAsString"))
         {
             String result = GameAnalytics.getRemoteConfigsContentAsString();
+            callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
+            return true;
+        }
+        else if(action.equals("getABTestingId"))
+        {
+            String result = GameAnalytics.getABTestingId();
+            callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
+            return true;
+        }
+        else if(action.equals("getABTestingVariantId"))
+        {
+            String result = GameAnalytics.getABTestingVariantId();
             callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
             return true;
         }
