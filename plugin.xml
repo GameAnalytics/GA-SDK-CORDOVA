@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-gameanalytics" version="3.1.0">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-gameanalytics" version="3.1.1">
     <name>GameAnalytics Cordova SDK</name>
     <description>Official GameAnalytics SDK Cordova Plugin for Android and iOS</description>
     <keywords>gameanalytics,analytics,ios,android</keywords>
