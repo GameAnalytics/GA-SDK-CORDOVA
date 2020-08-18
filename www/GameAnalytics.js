@@ -26,6 +26,34 @@ GameAnalytics.EGAProgressionStatus = {
     Fail: 3
 };
 
+GameAnalytics.EGAAdAction = {
+    Undefined: 0,
+    Clicked: 1,
+    Show: 2,
+    FailedShow: 3,
+    RewardReceived: 4
+};
+
+GameAnalytics.EGAAdError = {
+    Undefined: 0,
+    Unknown: 1,
+    Offline: 2,
+    NoFill: 3,
+    InternalError: 4,
+    InvalidRequest: 5,
+    UnableToPrecache: 6
+};
+
+GameAnalytics.EGAAdType = {
+    Undefined: 0,
+    Video: 1,
+    RewardedVideo: 2,
+    Playable: 3,
+    Interstitial: 4,
+    OfferWall: 5,
+    Banner: 6
+};
+
 GameAnalytics.configureAvailableCustomDimensions01 = function(customDimensions, onComplete) {
     console.log("GameAnalytics.configureAvailableCustomDimensions01");
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'configureAvailableCustomDimensions01', [customDimensions]);
@@ -94,6 +122,11 @@ GameAnalytics.addDesignEvent = function(args, onComplete) {
 GameAnalytics.addErrorEvent = function(args, onComplete) {
     console.log("GameAnalytics.addErrorEvent");
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'addErrorEvent', [args]);
+};
+
+GameAnalytics.addAdEvent = function(args, onComplete) {
+    console.log("GameAnalytics.addAdEvent");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'addAdEvent', [args]);
 };
 
 GameAnalytics.setEnabledInfoLog = function(flag, onComplete) {

@@ -16,6 +16,7 @@
 - (void)addProgressionEvent:(CDVInvokedUrlCommand*)command;
 - (void)addDesignEvent:(CDVInvokedUrlCommand*)command;
 - (void)addErrorEvent:(CDVInvokedUrlCommand*)command;
+- (void)addAdEvent:(CDVInvokedUrlCommand*)command;
 - (void)setEnabledInfoLog:(CDVInvokedUrlCommand*)command;
 - (void)setEnabledVerboseLog:(CDVInvokedUrlCommand*)command;
 - (void)setEnabledManualSessionHandling:(CDVInvokedUrlCommand*)command;

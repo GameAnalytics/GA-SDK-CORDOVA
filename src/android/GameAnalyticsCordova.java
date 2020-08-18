@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "3.2.0";
+    private static final String VERSION = "3.3.0";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -290,6 +290,40 @@ public class GameAnalyticsCordova extends CordovaPlugin
             }
 
             GameAnalytics.addErrorEventWithSeverity(severity, message);
+            callbackContext.success();
+            return true;
+        }
+        else if(action.equals("addAdEvent"))
+        {
+            JSONObject args = data.optJSONObject(0);
+            int adAction = 0;
+            int adType = 0;
+            String adSdkName = "";
+            String adPlacement = "";
+            long duration = 0;
+            boolean sendDuration = false;
+            int noAdReason = 0;
+
+            if(args != null)
+            {
+                adAction = args.optInt("adAction", 0);
+                adType = args.optInt("adType", 0);
+                adSdkName = args.optString("adSdkName", "");
+                adPlacement = args.optString("adPlacement", "");
+                duration = args.optLong("duration", 0);
+                sendDuration = args.has("duration");
+                noAdReason = args.optInt("noAdReason", 0);
+            }
+
+            if(sendDuration)
+            {
+                GameAnalytics.addAdEvent(adAction, adType, adSdkName, adPlacement, duration);
+            }
+            else
+            {
+                GameAnalytics.addAdEvent(adAction, adType, adSdkName, adPlacement, noAdReason);
+            }
+
             callbackContext.success();
             return true;
         }

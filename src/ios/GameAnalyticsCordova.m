@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"3.2.0"
+#define VERSION @"3.3.0"
 
 @implementation GameAnalyticsCordova
 
@@ -255,6 +255,39 @@
     }
 
     [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severity message:message];
+}
+
+- (void)addAdEvent:(CDVInvokedUrlCommand*)command
+{
+    NSMutableDictionary* args = [command.arguments objectAtIndex:0];
+
+    int adAction = 0;
+    int adType = 0;
+    NSString* adSdkName = nil;
+    NSString* adPlacement = nil;
+    NSInteger duration = 0;
+    BOOL sendDuration = NO;
+    int noAdReason = 0;
+
+    if(args != nil)
+    {
+        adAction = args[@"adAction"] && [args[@"adAction"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"adAction"] intValue] : 0;
+        adType = args[@"adType"] && [args[@"adType"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"adType"] intValue] : 0;
+        adSdkName = args[@"adSdkName"] && [args[@"adSdkName"] isKindOfClass:[NSString class]] ? args[@"adSdkName"] : @"";
+        adPlacement = args[@"adPlacement"] && [args[@"adPlacement"] isKindOfClass:[NSString class]] ? args[@"adPlacement"] : @"";
+        duration = args[@"duration"] && [args[@"duration"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"duration"] intValue] : 0;
+        sendDuration = args[@"duration"] && [args[@"duration"] isKindOfClass:[NSNumber class]] ? YES : NO;
+        noAdReason = args[@"noAdReason"] && [args[@"noAdReason"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"noAdReason"] intValue] : 0;
+    }
+
+    if(sendDuration)
+    {
+        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement duration:duration];
+    }
+    else
+    {
+        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement noAdReason:(GAAdError)noAdReason];
+    }
 }
 
 - (void)setEnabledInfoLog:(CDVInvokedUrlCommand*)command
