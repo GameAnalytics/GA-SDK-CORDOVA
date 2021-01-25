@@ -42,6 +42,9 @@ Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
 **3.3.5**
+* removed memory info from automatic crash reports
+
+**3.3.5**
 * * switched back to old way of checking ios version at runtime
 
 **3.3.4**
