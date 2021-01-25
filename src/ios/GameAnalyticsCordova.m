@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"3.3.3"
+#define VERSION @"3.3.4"
 
 @implementation GameAnalyticsCordova
 
