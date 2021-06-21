@@ -4,5 +4,5 @@ repositories {
 }
 
 dependencies {
-    compile "com.gameanalytics.sdk:gameanalytics-android:5.3.7"
+    compile "com.gameanalytics.sdk:gameanalytics-android:5.4.4"
 }

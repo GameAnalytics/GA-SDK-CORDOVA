@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "3.3.7";
+    private static final String VERSION = "3.3.8";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -159,7 +159,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
 
             GameAnalytics.configureSdkGameEngineVersion(sdkVersion);
             //GameAnalytics.configureGameEngineVersion("cordova " + VERSION);
-            GameAnalytics.initializeWithGameKey(mCordova.getActivity(), gameKey, gameSecret);
+            GameAnalytics.initialize(mCordova.getActivity(), gameKey, gameSecret);
             callbackContext.success();
             return true;
         }
@@ -187,11 +187,11 @@ public class GameAnalyticsCordova extends CordovaPlugin
 
             if(receipt.length() > 0 && signature.length() > 0)
             {
-                GameAnalytics.addBusinessEventWithCurrency(currency, amount, itemType, itemId, cartType, receipt, "google_play", signature);
+                GameAnalytics.addBusinessEvent(currency, amount, itemType, itemId, cartType, receipt, "google_play", signature);
             }
             else
             {
-                GameAnalytics.addBusinessEventWithCurrency(currency, amount, itemType, itemId, cartType);
+                GameAnalytics.addBusinessEvent(currency, amount, itemType, itemId, cartType);
             }
 
             callbackContext.success();
@@ -215,7 +215,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
                 itemId = args.optString("itemId", "");
             }
 
-            GameAnalytics.addResourceEventWithFlowType(flowType, currency, amount, itemType, itemId);
+            GameAnalytics.addResourceEvent(flowType, currency, amount, itemType, itemId);
             callbackContext.success();
             return true;
         }
@@ -241,11 +241,11 @@ public class GameAnalyticsCordova extends CordovaPlugin
 
             if(sendScore)
             {
-                GameAnalytics.addProgressionEventWithProgressionStatus(progressionStatus, progression01, progression02, progression03, score);
+                GameAnalytics.addProgressionEvent(progressionStatus, progression01, progression02, progression03, score);
             }
             else
             {
-                GameAnalytics.addProgressionEventWithProgressionStatus(progressionStatus, progression01, progression02, progression03);
+                GameAnalytics.addProgressionEvent(progressionStatus, progression01, progression02, progression03);
             }
 
             callbackContext.success();
@@ -267,11 +267,11 @@ public class GameAnalyticsCordova extends CordovaPlugin
 
             if(sendValue)
             {
-                GameAnalytics.addDesignEventWithEventId(eventId, value);
+                GameAnalytics.addDesignEvent(eventId, value);
             }
             else
             {
-                GameAnalytics.addDesignEventWithEventId(eventId);
+                GameAnalytics.addDesignEvent(eventId);
             }
 
             callbackContext.success();
@@ -289,7 +289,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
                 message = args.optString("message", "");
             }
 
-            GameAnalytics.addErrorEventWithSeverity(severity, message);
+            GameAnalytics.addErrorEvent(severity, message);
             callbackContext.success();
             return true;
         }
