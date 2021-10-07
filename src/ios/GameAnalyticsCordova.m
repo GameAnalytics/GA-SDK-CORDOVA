@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"4.0.0"
+#define VERSION @"4.1.0"
 
 @implementation GameAnalyticsCordova
 
@@ -141,6 +141,7 @@
     NSString* cartType = nil;
     NSString* receipt = nil;
     BOOL autoFetchReceipt = NO;
+    NSString* fields = nil;
 
     if(args != nil)
     {
@@ -149,17 +150,18 @@
         itemType = args[@"itemType"] && [args[@"itemType"] isKindOfClass:[NSString class]] ? args[@"itemType"] : @"";
         itemId = args[@"itemId"] && [args[@"itemId"] isKindOfClass:[NSString class]] ? args[@"itemId"] : @"";
         cartType = args[@"cartType"] && [args[@"cartType"] isKindOfClass:[NSString class]] ? args[@"cartType"] : @"";
-        receipt = args[@"receipt"] && [args[@"cartType"] isKindOfClass:[NSString class]] ? args[@"cartType"] : @"";
+        receipt = args[@"receipt"] && [args[@"receipt"] isKindOfClass:[NSString class]] ? args[@"receipt"] : @"";
         autoFetchReceipt = args[@"autoFetchReceipt"] && [args[@"autoFetchReceipt"] isKindOfClass:[NSNumber class]] && [args[@"autoFetchReceipt"] isEqual:[NSNumber numberWithBool:YES]] ? [[args valueForKey:@"autoFetchReceipt"] boolValue] : NO;
+        fields = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
     }
 
     if(autoFetchReceipt)
     {
-        [GameAnalytics addBusinessEventWithCurrency:currency amount:amount itemType:itemType itemId:itemId cartType:cartType autoFetchReceipt:autoFetchReceipt];
+        [GameAnalytics addBusinessEventWithCurrency:currency amount:amount itemType:itemType itemId:itemId cartType:cartType autoFetchReceipt:autoFetchReceipt customFields:fields];
     }
     else
     {
-        [GameAnalytics addBusinessEventWithCurrency:currency amount:amount itemType:itemType itemId:itemId cartType:cartType receipt:receipt];
+        [GameAnalytics addBusinessEventWithCurrency:currency amount:amount itemType:itemType itemId:itemId cartType:cartType receipt:receipt customFields:fields];
     }
 }
 
@@ -172,6 +174,7 @@
     double amount = 0;
     NSString* itemType = nil;
     NSString* itemId = nil;
+    NSString* fields = nil;
 
     if(args != nil)
     {
@@ -180,9 +183,10 @@
         amount = args[@"amount"] && [args[@"amount"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"amount"] doubleValue] : 0;
         itemType = args[@"itemType"];
         itemId = args[@"itemId"];
+        fields = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
     }
 
-    [GameAnalytics addResourceEventWithFlowType:(GAResourceFlowType)flowType currency:currency amount:@(amount) itemType:itemType itemId:itemId];
+    [GameAnalytics addResourceEventWithFlowType:(GAResourceFlowType)flowType currency:currency amount:@(amount) itemType:itemType itemId:itemId customFields:fields];
 }
 
 - (void)addProgressionEvent:(CDVInvokedUrlCommand*)command
@@ -195,6 +199,7 @@
     NSString* progression03 = nil;
     int score = 0;
     BOOL sendScore = NO;
+    NSString* fields = nil;
 
     if(args != nil)
     {
@@ -204,15 +209,16 @@
         progression03 = args[@"progression03"] && [args[@"progression03"] isKindOfClass:[NSString class]] ? args[@"progression03"] : @"";
         score = args[@"score"] && [args[@"score"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"score"] intValue] : 0;
         sendScore = args[@"score"] && [args[@"score"] isKindOfClass:[NSNumber class]] ? YES : NO;
+        fields = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
     }
 
     if(sendScore)
     {
-        [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus progression01:progression01 progression02:progression02 progression03:progression03 score:score];
+        [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus progression01:progression01 progression02:progression02 progression03:progression03 score:score customFields:fields];
     }
     else
     {
-        [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus progression01:progression01 progression02:progression02 progression03:progression03];
+        [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus progression01:progression01 progression02:progression02 progression03:progression03 customFields:fields];
     }
 }
 
@@ -223,21 +229,23 @@
     NSString* eventId = nil;
     double value = 0;
     BOOL sendValue = NO;
+    NSString* fields = nil;
 
     if(args != nil)
     {
         eventId = args[@"eventId"] && [args[@"eventId"] isKindOfClass:[NSString class]] ? args[@"eventId"] : @"";
         value = args[@"value"] && [args[@"value"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"value"] doubleValue] : 0;
         sendValue = args[@"value"] && [args[@"value"] isKindOfClass:[NSNumber class]] ? YES : NO;
+        fields = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
     }
 
     if(sendValue)
     {
-        [GameAnalytics addDesignEventWithEventId:eventId value:@(value)];
+        [GameAnalytics addDesignEventWithEventId:eventId value:@(value) customFields:fields];
     }
     else
     {
-        [GameAnalytics addDesignEventWithEventId:eventId];
+        [GameAnalytics addDesignEventWithEventId:eventId customFields:fields];
     }
 }
 
@@ -247,14 +255,16 @@
 
     int severity = 0;
     NSString* message = nil;
+    NSString* fields = nil;
 
     if(args != nil)
     {
         severity = args[@"severity"] && [args[@"severity"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"severity"] intValue] : 0;
         message = args[@"message"] && [args[@"message"] isKindOfClass:[NSString class]] ? args[@"message"] : @"";
+        fields = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
     }
 
-    [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severity message:message];
+    [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severity message:message customFields:fields];
 }
 
 - (void)addAdEvent:(CDVInvokedUrlCommand*)command
@@ -268,6 +278,7 @@
     NSInteger duration = 0;
     BOOL sendDuration = NO;
     int noAdReason = 0;
+    NSString* fields = nil;
 
     if(args != nil)
     {
@@ -278,15 +289,16 @@
         duration = args[@"duration"] && [args[@"duration"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"duration"] intValue] : 0;
         sendDuration = args[@"duration"] && [args[@"duration"] isKindOfClass:[NSNumber class]] ? YES : NO;
         noAdReason = args[@"noAdReason"] && [args[@"noAdReason"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"noAdReason"] intValue] : 0;
+        fields = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
     }
 
     if(sendDuration)
     {
-        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement duration:duration];
+        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement duration:duration customFields:fields];
     }
     else
     {
-        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement noAdReason:(GAAdError)noAdReason];
+        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement noAdReason:(GAAdError)noAdReason customFields:fields];
     }
 }
 
