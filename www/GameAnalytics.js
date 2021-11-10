@@ -164,6 +164,11 @@ GameAnalytics.setCustomDimension03 = function(dimension, onComplete) {
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setCustomDimension03', [dimension]);
 };
 
+GameAnalytics.setGlobalCustomEventFields = function (customFields, onComplete) {
+    console.log("GameAnalytics.setGlobalCustomEventFields");
+    exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'setGlobalCustomEventFields', [customFields]);
+};
+
 GameAnalytics.startSession = function(onComplete) {
     console.log("GameAnalytics.startSession");
     exec(onComplete, GameAnalytics._gameAnalyticsErrorEvent, PLUGIN_NAME, 'startSession', []);

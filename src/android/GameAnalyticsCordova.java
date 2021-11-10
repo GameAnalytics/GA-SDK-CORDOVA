@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "4.1.2";
+    private static final String VERSION = "4.2.0";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -388,6 +388,13 @@ public class GameAnalyticsCordova extends CordovaPlugin
         {
             String dimension = data.optString(0, "");
             GameAnalytics.setCustomDimension03(dimension);
+            callbackContext.success();
+            return true;
+        }
+        else if (action.equals("setGlobalCustomEventFields"))
+        {
+            String customFields = data.optString(0, "");
+            GameAnalytics.setGlobalCustomEventFields(customFields);
             callbackContext.success();
             return true;
         }

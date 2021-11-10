@@ -41,6 +41,9 @@ If you have any issues or feedback regarding the SDK, please contact our friendl
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**4.2.0**
+* added global custom event fields function to allow to add custom fields to events sent automatically by the SDK
+
 **4.1.2**
 * fixed dependencies versions
 

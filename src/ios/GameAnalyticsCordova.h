@@ -24,6 +24,7 @@
 - (void)setCustomDimension01:(CDVInvokedUrlCommand*)command;
 - (void)setCustomDimension02:(CDVInvokedUrlCommand*)command;
 - (void)setCustomDimension03:(CDVInvokedUrlCommand*)command;
+- (void)setGlobalCustomEventFields:(CDVInvokedUrlCommand *)command;
 - (void)startSession:(CDVInvokedUrlCommand*)command;
 - (void)endSession:(CDVInvokedUrlCommand*)command;
 - (void)getRemoteConfigsValueAsString:(CDVInvokedUrlCommand*)command;
