@@ -41,6 +41,9 @@ If you have any issues or feedback regarding the SDK, please contact our friendl
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**4.2.2**
+* fixed build.gradle for android
+
 **4.2.1**
 * fixed missing custom event fields for when trying to fix missing session end events
 

@@ -1,8 +1,8 @@
 repositories {
-    maven { url 'http://maven.gameanalytics.com/release' }
+    maven { url 'https://maven.gameanalytics.com/release' }
     maven { url 'https://maven.google.com' }
 }
 
 dependencies {
-    compile "com.gameanalytics.sdk:gameanalytics-android:6.2.1"
+    implementation "com.gameanalytics.sdk:gameanalytics-android:6.2.1"
 }
