@@ -4,5 +4,5 @@ repositories {
 }
 
 dependencies {
-    implementation "com.gameanalytics.sdk:gameanalytics-android:6.2.1"
+    implementation "com.gameanalytics.sdk:gameanalytics-android:6.2.4"
 }

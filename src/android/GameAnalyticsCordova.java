@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GameAnalyticsCordova extends CordovaPlugin
 {
     private CordovaInterface mCordova;
-    private static final String VERSION = "4.2.2";
+    private static final String VERSION = "4.2.3";
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView)
@@ -174,6 +174,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             String receipt = "";
             String signature = "";
             String fields = "";
+            boolean mergeFields = false;
 
             if(args != null)
             {
@@ -185,16 +186,17 @@ public class GameAnalyticsCordova extends CordovaPlugin
                 receipt = args.optString("receipt", "");
                 signature = args.optString("signature", "");
                 fields = args.optString("customFields", "");
+                mergeFields = args.optBoolean("mergeFields", false);
             }
 
             if(receipt.length() > 0 && signature.length() > 0)
             {
                 GameAnalytics.addBusinessEvent(currency, amount, itemType, itemId, cartType, receipt, "google_play", signature,
-                        fields);
+                        fields, mergeFields);
             }
             else
             {
-                GameAnalytics.addBusinessEvent(currency, amount, itemType, itemId, cartType, fields);
+                GameAnalytics.addBusinessEvent(currency, amount, itemType, itemId, cartType, fields, mergeFields);
             }
 
             callbackContext.success();
@@ -209,6 +211,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             String itemType = "";
             String itemId = "";
             String fields = "";
+            boolean mergeFields = false;
 
             if(args != null)
             {
@@ -218,9 +221,10 @@ public class GameAnalyticsCordova extends CordovaPlugin
                 itemType = args.optString("itemType", "");
                 itemId = args.optString("itemId", "");
                 fields = args.optString("customFields", "");
+                mergeFields = args.optBoolean("mergeFields", false);
             }
 
-            GameAnalytics.addResourceEvent(flowType, currency, amount, itemType, itemId, fields);
+            GameAnalytics.addResourceEvent(flowType, currency, amount, itemType, itemId, fields, mergeFields);
             callbackContext.success();
             return true;
         }
@@ -234,6 +238,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             double score = 0;
             boolean sendScore = false;
             String fields = "";
+            boolean mergeFields = false;
 
             if(args != null)
             {
@@ -244,17 +249,18 @@ public class GameAnalyticsCordova extends CordovaPlugin
                 score = args.optInt("score", 0);
                 sendScore = args.has("score");
                 fields = args.optString("customFields", "");
+                mergeFields = args.optBoolean("mergeFields", false);
             }
 
             if(sendScore)
             {
                 GameAnalytics.addProgressionEvent(progressionStatus, progression01, progression02, progression03, score,
-                        fields);
+                        fields, mergeFields);
             }
             else
             {
                 GameAnalytics.addProgressionEvent(progressionStatus, progression01, progression02, progression03,
-                        fields);
+                        fields, mergeFields);
             }
 
             callbackContext.success();
@@ -267,6 +273,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             double value = 0;
             boolean sendValue = false;
             String fields = "";
+            boolean mergeFields = false;
 
             if(args != null)
             {
@@ -274,15 +281,16 @@ public class GameAnalyticsCordova extends CordovaPlugin
                 value = args.optDouble("value", 0);
                 sendValue = args.has("value");
                 fields = args.optString("customFields", "");
+                mergeFields = args.optBoolean("mergeFields", false);
             }
 
             if(sendValue)
             {
-                GameAnalytics.addDesignEvent(eventId, value, fields);
+                GameAnalytics.addDesignEvent(eventId, value, fields, mergeFields);
             }
             else
             {
-                GameAnalytics.addDesignEvent(eventId, fields);
+                GameAnalytics.addDesignEvent(eventId, fields, mergeFields);
             }
 
             callbackContext.success();
@@ -294,15 +302,17 @@ public class GameAnalyticsCordova extends CordovaPlugin
             int severity = 0;
             String message = "";
             String fields = "";
+            boolean mergeFields = false;
 
             if(args != null)
             {
                 severity = args.optInt("severity", 0);
                 message = args.optString("message", "");
                 fields = args.optString("customFields", "");
+                mergeFields = args.optBoolean("mergeFields", false);
             }
 
-            GameAnalytics.addErrorEvent(severity, message, fields);
+            GameAnalytics.addErrorEvent(severity, message, fields, mergeFields);
             callbackContext.success();
             return true;
         }
@@ -317,6 +327,7 @@ public class GameAnalyticsCordova extends CordovaPlugin
             boolean sendDuration = false;
             int noAdReason = 0;
             String fields = "";
+            boolean mergeFields = false;
 
             if(args != null)
             {
@@ -328,15 +339,16 @@ public class GameAnalyticsCordova extends CordovaPlugin
                 sendDuration = args.has("duration");
                 noAdReason = args.optInt("noAdReason", 0);
                 fields = args.optString("customFields", "");
+                mergeFields = args.optBoolean("mergeFields", false);
             }
 
             if(sendDuration)
             {
-                GameAnalytics.addAdEvent(adAction, adType, adSdkName, adPlacement, duration, fields);
+                GameAnalytics.addAdEvent(adAction, adType, adSdkName, adPlacement, duration, fields, mergeFields);
             }
             else
             {
-                GameAnalytics.addAdEvent(adAction, adType, adSdkName, adPlacement, noAdReason, fields);
+                GameAnalytics.addAdEvent(adAction, adType, adSdkName, adPlacement, noAdReason, fields, mergeFields);
             }
 
             callbackContext.success();

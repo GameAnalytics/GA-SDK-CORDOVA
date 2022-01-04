@@ -1,7 +1,7 @@
 #import "GameAnalyticsCordova.h"
 #import "GameAnalytics.h"
 
-#define VERSION @"4.2.2"
+#define VERSION @"4.2.3"
 
 @implementation GameAnalyticsCordova
 
@@ -142,6 +142,7 @@
     NSString* receipt = nil;
     BOOL autoFetchReceipt = NO;
     NSString* fieldsString = nil;
+    BOOL mergeFields = NO;
 
     if(args != nil)
     {
@@ -153,6 +154,7 @@
         receipt = args[@"receipt"] && [args[@"receipt"] isKindOfClass:[NSString class]] ? args[@"receipt"] : @"";
         autoFetchReceipt = args[@"autoFetchReceipt"] && [args[@"autoFetchReceipt"] isKindOfClass:[NSNumber class]] && [args[@"autoFetchReceipt"] isEqual:[NSNumber numberWithBool:YES]] ? [[args valueForKey:@"autoFetchReceipt"] boolValue] : NO;
         fieldsString = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
+        mergeFields = args[@"mergeFields"] && [args[@"mergeFields"] isKindOfClass:[NSNumber class]] && [args[@"mergeFields"] isEqual:[NSNumber numberWithBool:YES]] ? [[args valueForKey:@"mergeFields"] boolValue] : NO;
     }
 
     NSDictionary *fields_dict = nil;
@@ -162,11 +164,11 @@
 
     if(autoFetchReceipt)
     {
-        [GameAnalytics addBusinessEventWithCurrency:currency amount:amount itemType:itemType itemId:itemId cartType:cartType autoFetchReceipt:autoFetchReceipt customFields:fields_dict];
+        [GameAnalytics addBusinessEventWithCurrency:currency amount:amount itemType:itemType itemId:itemId cartType:cartType autoFetchReceipt:autoFetchReceipt customFields:fields_dict mergeFields:mergeFields];
     }
     else
     {
-        [GameAnalytics addBusinessEventWithCurrency:currency amount:amount itemType:itemType itemId:itemId cartType:cartType receipt:receipt customFields:fields_dict];
+        [GameAnalytics addBusinessEventWithCurrency:currency amount:amount itemType:itemType itemId:itemId cartType:cartType receipt:receipt customFields:fields_dict mergeFields:mergeFields];
     }
 }
 
@@ -180,6 +182,7 @@
     NSString* itemType = nil;
     NSString* itemId = nil;
     NSString* fieldsString = nil;
+    BOOL mergeFields = NO;
 
     if(args != nil)
     {
@@ -189,6 +192,7 @@
         itemType = args[@"itemType"];
         itemId = args[@"itemId"];
         fieldsString = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
+        mergeFields = args[@"mergeFields"] && [args[@"mergeFields"] isKindOfClass:[NSNumber class]] && [args[@"mergeFields"] isEqual:[NSNumber numberWithBool:YES]] ? [[args valueForKey:@"mergeFields"] boolValue] : NO;
     }
 
     NSDictionary *fields_dict = nil;
@@ -196,7 +200,7 @@
         fields_dict = [NSJSONSerialization JSONObjectWithData:[fieldsString dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
     }
 
-    [GameAnalytics addResourceEventWithFlowType:(GAResourceFlowType)flowType currency:currency amount:@(amount) itemType:itemType itemId:itemId customFields:fields_dict];
+    [GameAnalytics addResourceEventWithFlowType:(GAResourceFlowType)flowType currency:currency amount:@(amount) itemType:itemType itemId:itemId customFields:fields_dict mergeFields:mergeFields];
 }
 
 - (void)addProgressionEvent:(CDVInvokedUrlCommand*)command
@@ -210,6 +214,7 @@
     int score = 0;
     BOOL sendScore = NO;
     NSString* fieldsString = nil;
+    BOOL mergeFields = NO;
 
     if(args != nil)
     {
@@ -220,6 +225,7 @@
         score = args[@"score"] && [args[@"score"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"score"] intValue] : 0;
         sendScore = args[@"score"] && [args[@"score"] isKindOfClass:[NSNumber class]] ? YES : NO;
         fieldsString = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
+        mergeFields = args[@"mergeFields"] && [args[@"mergeFields"] isKindOfClass:[NSNumber class]] && [args[@"mergeFields"] isEqual:[NSNumber numberWithBool:YES]] ? [[args valueForKey:@"mergeFields"] boolValue] : NO;
     }
 
     NSDictionary *fields_dict = nil;
@@ -229,11 +235,11 @@
 
     if(sendScore)
     {
-        [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus progression01:progression01 progression02:progression02 progression03:progression03 score:score customFields:fields_dict];
+        [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus progression01:progression01 progression02:progression02 progression03:progression03 score:score customFields:fields_dict mergeFields:mergeFields];
     }
     else
     {
-        [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus progression01:progression01 progression02:progression02 progression03:progression03 customFields:fields_dict];
+        [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus progression01:progression01 progression02:progression02 progression03:progression03 customFields:fields_dict mergeFields:mergeFields];
     }
 }
 
@@ -245,6 +251,7 @@
     double value = 0;
     BOOL sendValue = NO;
     NSString* fieldsString = nil;
+    BOOL mergeFields = NO;
 
     if(args != nil)
     {
@@ -252,6 +259,7 @@
         value = args[@"value"] && [args[@"value"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"value"] doubleValue] : 0;
         sendValue = args[@"value"] && [args[@"value"] isKindOfClass:[NSNumber class]] ? YES : NO;
         fieldsString = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
+        mergeFields = args[@"mergeFields"] && [args[@"mergeFields"] isKindOfClass:[NSNumber class]] && [args[@"mergeFields"] isEqual:[NSNumber numberWithBool:YES]] ? [[args valueForKey:@"mergeFields"] boolValue] : NO;
     }
 
     NSDictionary *fields_dict = nil;
@@ -261,11 +269,11 @@
 
     if(sendValue)
     {
-        [GameAnalytics addDesignEventWithEventId:eventId value:@(value) customFields:fields_dict];
+        [GameAnalytics addDesignEventWithEventId:eventId value:@(value) customFields:fields_dict mergeFields:mergeFields];
     }
     else
     {
-        [GameAnalytics addDesignEventWithEventId:eventId customFields:fields_dict];
+        [GameAnalytics addDesignEventWithEventId:eventId customFields:fields_dict mergeFields:mergeFields];
     }
 }
 
@@ -276,12 +284,14 @@
     int severity = 0;
     NSString* message = nil;
     NSString* fieldsString = nil;
+    BOOL mergeFields = NO;
 
     if(args != nil)
     {
         severity = args[@"severity"] && [args[@"severity"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"severity"] intValue] : 0;
         message = args[@"message"] && [args[@"message"] isKindOfClass:[NSString class]] ? args[@"message"] : @"";
         fieldsString = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
+        mergeFields = args[@"mergeFields"] && [args[@"mergeFields"] isKindOfClass:[NSNumber class]] && [args[@"mergeFields"] isEqual:[NSNumber numberWithBool:YES]] ? [[args valueForKey:@"mergeFields"] boolValue] : NO;
     }
 
     NSDictionary *fields_dict = nil;
@@ -289,7 +299,7 @@
         fields_dict = [NSJSONSerialization JSONObjectWithData:[fieldsString dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
     }
 
-    [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severity message:message customFields:fields_dict];
+    [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severity message:message customFields:fields_dict mergeFields:mergeFields];
 }
 
 - (void)addAdEvent:(CDVInvokedUrlCommand*)command
@@ -304,6 +314,7 @@
     BOOL sendDuration = NO;
     int noAdReason = 0;
     NSString* fieldsString = nil;
+    BOOL mergeFields = NO;
 
     if(args != nil)
     {
@@ -315,6 +326,7 @@
         sendDuration = args[@"duration"] && [args[@"duration"] isKindOfClass:[NSNumber class]] ? YES : NO;
         noAdReason = args[@"noAdReason"] && [args[@"noAdReason"] isKindOfClass:[NSNumber class]] ? [[args valueForKey:@"noAdReason"] intValue] : 0;
         fieldsString = args[@"customFields"] && [args[@"customFields"] isKindOfClass:[NSString class]] ? args[@"customFields"] : @"";
+        mergeFields = args[@"mergeFields"] && [args[@"mergeFields"] isKindOfClass:[NSNumber class]] && [args[@"mergeFields"] isEqual:[NSNumber numberWithBool:YES]] ? [[args valueForKey:@"mergeFields"] boolValue] : NO;
     }
 
     NSDictionary *fields_dict = nil;
@@ -324,11 +336,11 @@
 
     if(sendDuration)
     {
-        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement duration:duration customFields:fields_dict];
+        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement duration:duration customFields:fields_dict mergeFields:mergeFields];
     }
     else
     {
-        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement noAdReason:(GAAdError)noAdReason customFields:fields_dict];
+        [GameAnalytics addAdEventWithAction:(GAAdAction)adAction adType:(GAAdType)adType adSdkName:adSdkName adPlacement:adPlacement noAdReason:(GAAdError)noAdReason customFields:fields_dict mergeFields:mergeFields];
     }
 }
 
