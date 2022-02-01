@@ -41,6 +41,9 @@ If you have any issues or feedback regarding the SDK, please contact our friendl
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**4.2.6**
+* updated dependencies
+
 **4.2.5**
 * switched to use api 30 instead of 31 for android
 
