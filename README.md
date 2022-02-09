@@ -41,6 +41,9 @@ If you have any issues or feedback regarding the SDK, please contact our friendl
 Changelog
 ---------
 <!--(CHANGELOG_TOP)-->
+**4.2.7**
+* added event uuid for events sent
+
 **4.2.6**
 * updated dependencies
 
