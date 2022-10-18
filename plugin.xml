@@ -45,7 +45,7 @@
                 <source url="https://cdn.cocoapods.org/" />
             </config>
             <pods>
-                <pod name="GA-SDK-IOS" spec="~> 4.6.5" />
+                <pod name="GA-SDK-IOS" spec="~> 4.7.1" />
             </pods>
         </podspec>
 
